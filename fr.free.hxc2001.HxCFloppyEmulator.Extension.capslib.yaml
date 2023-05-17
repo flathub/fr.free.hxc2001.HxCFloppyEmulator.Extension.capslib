@@ -19,17 +19,18 @@ modules:
     sources: 
       - type: extra-data
         only-arches: [x86_64]
-        url: http://www.softpres.org/_media/files:ipflib42_linux-x86_64.tar.gz
-        sha256: ea139673e29a36dc3be7ba916628b5c8a03353bd68be4d346daed803d472ddf3
-        size: 48272
-        filename: ipflib42_linux.tar.gz
+        url: https://www.kryoflux.com/download/kryoflux_3.00_linux.tgz
+        sha256: 8023cd20548d83646a060d6fdc8f487da8e6935d2a52a5996ca672d934614ec9
+        size: 13921877
+        filename: kryoflux_3.00_linux.tgz
       - type: script
         dest-filename: apply_extra
         commands:
-          - tar -xzf ipflib42_linux.tar.gz
+          - tar -xzf kryoflux_3.00_linux.tgz
+          - tar -xzf kryoflux_3.00_linux/dtc/x86_64/dtc-3.0.0-Linux.tar.gz
           - install -d lib
-          - install -Dm644 -t lib x86_64-linux-gnu-capsimage/libcapsimage.so.4.2
-          - ln -s libcapsimage.so.4.2 lib/libcapsimage.so.5.1
-          - rm -r x86_64-linux-gnu-capsimage ipflib42_linux.tar.gz
+          - install -Dm644 -t lib dtc-3.0.0-Linux/lib/libCAPSImage.so.5.1
+          - ln -s libCAPSImage.so.5.1 lib/libcapsimage.so.5.1
+          - rm -r kryoflux_3.00_linux dtc-3.0.0-Linux kryoflux_3.00_linux.tgz
       - type: file
         path: fr.free.hxc2001.HxCFloppyEmulator.Extension.capslib.metainfo.xml
